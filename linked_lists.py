@@ -58,8 +58,20 @@ class DoubblyLinkedList:
         temp.next_node.previous_node = temp.previous_node
         return 0
     
-class CircularLinkedList:
+class CircularDoubllyLinkedList:
     def __init__(self) -> None:
         self.head = None
         self.tail = None
+        self.size = 0
+    def insert(self,data):
+        new_node = ListNode(data)
+        if not self.head:
+            self.tail = self.head = new_node
+        else:
+            self.tail.next = new_node
+            new_node.previous_node = self.tail
+            self.tail = self.tail.next_node
+        self.head.previous_node = self.tail
+        self.tail.next = self.head
     
+    #delete is same as for SLL or DLL based on the implementation as CSLL or CDLL 
