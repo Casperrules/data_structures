@@ -3,6 +3,7 @@ class Node:
         self.data = data
         self.next = None
         self.previous = None
+# a deque will need to be implemented using a DLL so have that option with this nodde. <Future Thinkings>
     
 class Stack:
     def __init__(self) -> None:
