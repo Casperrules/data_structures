@@ -45,18 +45,6 @@ class MinHeap:
         else:
             raise Exception('heap is empty')
             
-
-
-## Testing Min heap
-# my_min_heap = MinHeap([10,5,1,4,2,3,8,7,0,6,9])
-# my_min_heap.min_heapify()
-# arr = [i for i in range(100_000_000,-1,-1)] #for very big input, it is a little<very> slow
-# print("done")
-# my_min_heap = MinHeap(arr)
-# my_min_heap.min_heapify()
-# print(my_min_heap.min_heap[0])
-
-
 class MaxHeap:
     def __init__(self,arr=[]) -> None:
         self.heap = arr
@@ -102,11 +90,3 @@ class MaxHeap:
         if self.size()==0:
             raise Exception('heap is empty. no max element found')
         return self.heap[0]
-
-# testing MaxHeap
-my_heap = MaxHeap([10,5,1,4,2,3,8,7,0,6,9])
-# for i in range(1,11):
-#     my_heap.insert(i)
-# print(my_heap.heap)
-for _ in range(my_heap.size()):
-    print(my_heap.get_max())
