@@ -12,7 +12,6 @@ class MinHeap:
         smallest = index
         left_child = 2*index+1
         right_child = 2*index+2
-        
         if left_child<self.size() and self.heap[smallest]>self.heap[left_child]:
             smallest = left_child
         if right_child<self.size() and self.heap[smallest]>self.heap[right_child]:
@@ -61,6 +60,8 @@ class MinHeap:
 class MaxHeap:
     def __init__(self,arr=[]) -> None:
         self.heap = arr
+        if not self.heap:
+            return
         for i in range((self.size()-1)//2,-1,-1):
             self.heapify(i)
     
@@ -78,7 +79,34 @@ class MaxHeap:
         if largest!=index:
             self.heap[largest],self.heap[index] = self.heap[index],self.heap[largest]
             self.heapify(largest)
-my_max_heap = MaxHeap([10,5,1,4,2,3,8,7,0,6,9])
-print(my_max_heap.heap)
-my_min_heap = MinHeap([10,5,1,4,2,3,8,7,0,6,9])
-print(my_min_heap.heap)
+
+    def insert(self,data):
+        self.heap.append(data)
+        new_node_index = self.size()-1
+        parent_index = new_node_index//2
+        while self.heap[new_node_index]>self.heap[parent_index]:
+            self.heap[new_node_index],self.heap[parent_index] = \
+                self.heap[parent_index],self.heap[new_node_index]
+            new_node_index = parent_index
+            parent_index = new_node_index//2
+    
+    def get_max(self):
+        if self.size()==0:
+            raise Exception('Heap is empty. can not get max element from empty heap')
+        self.heap[0],self.heap[-1] = self.heap[-1],self.heap[0]
+        max_val = self.heap.pop()
+        self.heapify(0)
+        return max_val
+    
+    def peek(self):
+        if self.size()==0:
+            raise Exception('heap is empty. no max element found')
+        return self.heap[0]
+
+# testing MaxHeap
+my_heap = MaxHeap([10,5,1,4,2,3,8,7,0,6,9])
+# for i in range(1,11):
+#     my_heap.insert(i)
+# print(my_heap.heap)
+for _ in range(my_heap.size()):
+    print(my_heap.get_max())
