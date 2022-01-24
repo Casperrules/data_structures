@@ -89,23 +89,3 @@ class BinarySearchTree:
                 print(curr.data)
                 curr = curr.right
                 
-        
-
-
-my_bst = BinarySearchTree()
-my_bst.insert(1)
-my_bst.insert(2)
-my_bst.insert(3)
-my_bst.insert(4)
-my_bst.insert(5)
-my_bst.insert(6)
-my_bst.insert(7)
-my_bst.insert(8)
-my_bst.insert(9)
-my_bst.insert(10)
-
-my_bst.inorder()
-my_bst.delete(10)
-print("==================")
-my_bst.inorder_iterative()
-# print(my_bst.search(10).data)
