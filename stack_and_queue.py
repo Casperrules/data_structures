@@ -12,6 +12,7 @@ class Stack:
         new_node = Node(data)
         if not self.head:
             self.head = new_node
+            self.size+=1
             return
         self.head.next = new_node
         new_node.previous = self.head
@@ -37,4 +38,27 @@ class Queue:
         self.tail = None
         self.size = 0
     
+    def enqueue(self,data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = self.tail = new_node
+            self.size+=1
+            return
+        self.tail.next = new_node
+        self.tail = self.tail.next
+        self.size+=1
     
+    def dequeue(self):
+        if self.size==0:
+            raise Exception('Empty queue can not be dequeued')
+        deququed_val = self.head.data
+        self.head = self.head.next
+        self.size-=1
+        if self.size==0:
+            self.tail = self.head = None
+        return deququed_val
+    
+    def peek(self):
+        return self.head.data
+
+
